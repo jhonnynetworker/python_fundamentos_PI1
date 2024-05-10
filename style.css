@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #E493B3;
+    padding: 10px 40px; /* Ajustando o preenchimento para reduzir a largura do retângulo rosa */
+    margin: 400px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.title{
+    color: #000000;
+    margin-bottom: 10px;
+    margin-left: 22%;
+    font-size: 25px;
+}
+
+.li{
+    margin-left: 22%;
+    margin-right: 22%;
+}
+
+
+.p{
+    margin-left: 22%;
+    margin-right: 22%;
+}
+
+.button:hover {
+    background-color: #D181A1; /* Cor um pouco mais escura ao passar o mouse */
+}
+
+.btn{
+    margin-left: 300px;
+}
+
+.direitos{
+    margin-top: 42%;
+    font-size: 15px;
+    margin-left: 80%;
+}
