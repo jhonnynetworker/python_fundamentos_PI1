@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bem-vindo à minha aplicação Flask!</h1>
+    <h2>Lista de Desempregados</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Telefone</th>
+            <th>Formação</th>
+            <th>Email</th>
+        </tr>
+        {% for desempregado in desempregados %}
+        <tr>
+            <td>{{ desempregado[0] }}</td>
+            <td>{{ desempregado[1] }}</td>
+            <td>{{ desempregado[2] }}</td>
+            <td>{{ desempregado[3] }}</td>
+            <td>{{ desempregado[4] }}</td>
+            <td>{{ desempregado[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table> 
+    <h2>Adicionar Novo Desempregado</h2>
+    <form action="/submit" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br>
+        <label for="idade">Idade:</label>
+        <input type="text" id="idade" name="idade"><br>
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone"><br>
+        <label for="formacao">Formação:</label>
+        <input type="text" id="formacao" name="formacao"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+        <input type="submit" value="Adicionar">
+    </form>
+    <h2>Deletar Desempregado</h2>
+    <form action="/delete" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id"><br>
+        <input type="submit" value="Deletar">
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Bem-vindo à A.G.D!</h1>
+    <h2>Adicionar Novo Desempregado</h2>
+    <form action="/submit" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br>
+        <label for="idade">Idade:</label>
+        <input type="text" id="idade" name="idade"><br>
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone"><br>
+        <label for="formacao">Formação:</label>
+        <input type="text" id="formacao" name="formacao"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+        <input type="submit" value="Adicionar">
+    </form>
+    <h2>Deletar Desempregado</h2>
+    <form action="/delete" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id"><br>
+        <input type="submit" value="Deletar">
+    </form>
+</body>
+</html>
+
