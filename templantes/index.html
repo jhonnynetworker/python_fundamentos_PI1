@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciamento de Desempregados</title>
+  </head>
+  <body>
+    <h1>Gerenciamento de Desempregados</h1>
+
+    <form id="formulario">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required /><br />
+
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade" required /><br />
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required /><br />
+
+      <label for="formacao">Formação:</label>
+      <input type="text" id="formacao" name="formacao" required /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br />
+
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <div id="desempregados"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
