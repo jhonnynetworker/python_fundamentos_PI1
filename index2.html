@@ -18,49 +18,71 @@
   measurementId: "G-FDFYQ8KDFD"
 };
 
-        firebase.initializeApp(firebaseConfig);
 
-        function signInWithGoogle() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(provider)
-                .then((result) => {
-                    const user = result.user;
-                    const email = user.email;
+    // Inicializa o aplicativo Firebase com a configuração fornecida
+    firebase.initializeApp(firebaseConfig);
 
-                    sessionStorage.setItem('userEmail', email);
+    // Função para fazer login com Google
+    function signInWithGoogle() {
+        // Cria um provedor de autenticação do Google
+        const provider = new firebase.auth.GoogleAuthProvider();
+        
+        // Inicia o processo de login com um popup
+        firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                // Obtém as informações do usuário após o login
+                const user = result.user;
+                const email = user.email;
 
-                    // Call your API to check if the user needs additional information
-                    fetch('http://127.0.0.1:5000/auth/google-login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email }),
-                    })
-                    .then(response => {
-                        if (response.status === 206) {
-                            window.location.href = 'form.html';
-                        } else if (response.status === 200) {
-                            return response.json();
-                        } else {
-                            throw new Error('Failed to log in');
-                        }
-                    })
-                    .then(data => {
-                        if (data) {
-                            // User logged in successfully, continue the application flow
-                            console.log('User data:', data);
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
+                // Salva o email no sessionStorage
+                sessionStorage.setItem('userEmail', email);
+
+                // Chama a API para verificar se o usuário precisa fornecer informações adicionais
+                fetch('http://127.0.0.1:5000/auth/google-login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email }),  // Envia o email do usuário no corpo da requisição
+                })
+                .then(response => {
+                    // Verifica o status da resposta da API
+                    if (response.status === 206) {
+                        // Dados do usuário incompletos, redireciona para o formulário
+                        window.location.href = 'form.html';
+                    } else if (response.status === 404) {
+                        // Usuário não encontrado, redireciona para o formulário para preencher os detalhes
+                        window.location.href = 'form.html';
+                    } else if (response.ok) {
+                        // Usuário encontrado, redireciona para a página principal
+                        window.location.href = 'index2.html';
+                        return response.json();
+                    } else {
+                        // Lida com outros erros potenciais
+                        return response.json().then(data => {
+                            throw new Error(data.error || 'Failed to log in');
+                        });
+                    }
+                })
+                .then(data => {
+                    if (data) {
+                        // Usuário logado com sucesso, continua o fluxo da aplicação
+                        console.log('User data:', data);
+                    }
                 })
                 .catch((error) => {
-                    console.error("Error:", error.code, error.message);
+                    // Exibe o erro no console
+                    console.error('Error:', error);
                 });
-        }
-    </script>
+            })
+            .catch((error) => {
+                // Lida com erros durante o processo de login
+                console.error("Error:", error.code, error.message);
+            });
+    }
+</script>
+                   
+                          
     <title>Document</title>
 </head>
 
@@ -84,82 +106,6 @@
         target="_blank" rel="noopener">
 
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login with Google using Firebase</title>
-
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-auth-compat.js"></script>
-
-    <script>
-        const firebaseConfig = {
-  apiKey: "AIzaSyAH-VV4HPr198aYhLL5bOHrEK-KCcNrgRA",
-  authDomain: "crosta-crocante.firebaseapp.com",
-  projectId: "crosta-crocante",
-  storageBucket: "crosta-crocante.appspot.com",
-  messagingSenderId: "808538059667",
-  appId: "1:808538059667:web:991784909dfd026af42e66",
-  measurementId: "G-FDFYQ8KDFD"
-};
-
-
-        firebase.initializeApp(firebaseConfig);
-
-        function signInWithGoogle() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(provider)
-                .then((result) => {
-                    const user = result.user;
-                    const email = user.email;
-
-                    sessionStorage.setItem('userEmail', email);
-
-
-                    // Call your API to check if the user needs additional information
-                    fetch('http://127.0.0.1:5000/auth/google-login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email }),
-                    })
-                        .then(response => {
-                            if (response.status === 206) {
-                                window.location.href = 'form.html';
-                            } else if (response.ok) {
-                                return response.json();
-                            } else {
-                                throw new Error('Failed to log in');
-                            }
-                        })
-                        .then(data => {
-                            if (data) {
-                                // User logged in successfully, continue the application flow
-                                console.log('User data:', data);
-                            }
-                        })
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                })
-                .catch((error) => {
-                    console.error("Error:", error.code, error.message);
-                });
-        }
-    </script>
-</head>
-
-<body>
-    <h1>Faça login com o Google usando Firebase</h1>
-    <button onclick="signInWithGoogle()">Inicia sessão com Google</button>
-</body>
-
-</html> -->
 </body>
 
 </html>
