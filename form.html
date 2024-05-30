@@ -4,21 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fill Data</title>
+    <link rel="stylesheet" href="form.css">
+    <title>Registro do usuário</title>
 </head>
 
 <body>
-    <h1>Preencha Suas Informações</h1>
-    <!-- Formulário para coletar informações adicionais do usuário -->
-    <form id="additional-info-form">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="age">Idade:</label>
-        <input type="number" id="age" name="age" required>
-        <br>
-        <button type="submit">Enviar</button>
-    </form>
+    <div class="container">
+        <h1>Preencha Suas Informações</h1>
+        <!-- Formulário para coletar informações adicionais do usuário -->
+        <form id="additional-info-form">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Idade:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 
     <script>
         // Adiciona um ouvinte de evento ao formulário para o evento de envio (submit)
@@ -53,7 +58,7 @@
                 // Loga uma mensagem de sucesso no console
                 console.log('Informações adicionais enviadas com sucesso:', data);
                 // Redireciona o usuário para outra página
-                window.location.href = 'index2.html'; // Muda para a página desejada
+                window.location.href = 'principal.html'; // Muda para a página desejada
             })
             .catch(error => {
                 // Loga um erro no console em caso de falha

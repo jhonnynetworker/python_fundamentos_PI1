@@ -1,4 +1,4 @@
-# Importa as bibliotecas necessárias
+# Importando as bibliotecas necessárias
 from flask import Blueprint, request, jsonify
 import firebase_admin
 from firebase_admin import firestore
@@ -9,88 +9,90 @@ from config import init_firebase
 if not firebase_admin._apps:
     init_firebase()
 
-# Cria uma conexion do cliente do Firestore
+# Cria uma instância do cliente do Firestore
 db = firestore.client()
 
 # Cria um Blueprint chamado 'product_bp' para agrupar rotas relacionadas a produtos
 product_bp = Blueprint('product_bp', __name__)
-CORS(product_bp)  # Permite pedidos de origens diferentes (CORS)
+CORS(product_bp)  # Permite requisições de origens diferentes (CORS)
 
-# Define a classe Product
 class Product:
-    def __init__(self, name, price, size):
+    """Classe para representar um produto."""
+
+    def __init__(self, name, price_6_slices, price_8_slices, price_12_slices):
+        """Inicializa um produto com seu nome e preços."""
         self.name = name
-        self.price = price
-        self.size = size
+        self.price_6_slices = price_6_slices
+        self.price_8_slices = price_8_slices
+        self.price_12_slices = price_12_slices
 
     def to_dict(self):
+        """Converte os dados do produto em um dicionário."""
         return {
             'name': self.name,
-            'price': self.price,
-            'size': self.size
+            'price_6_slices': self.price_6_slices,
+            'price_8_slices': self.price_8_slices,
+            'price_12_slices': self.price_12_slices,
         }
 
-# Define a rota para obter a lista de produtos
+
+# Definições de Rotas
+
 @product_bp.route('/products', methods=['GET'])
 def get_products():
+    """Obtém a lista de todos os produtos."""
     try:
-        # Consulta a coleção 'Produtos' no Firestore
-        products_ref = db.collection('Produtos')
-        products = products_ref.stream()
+        products_ref = db.collection('Produtos').stream()
         product_list = []
-        for product in products:
+        for product in products_ref:
             prod_dict = product.to_dict()
-            prod_dict['id'] = product.id  # Inclui o ID do documento
+            prod_dict['id'] = product.id
             product_list.append(prod_dict)
-        return jsonify(product_list), 200  # Retorna a lista de produtos
+        return jsonify(product_list), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # Retorna um erro genérico em caso de exceção
+        return jsonify({"error": str(e)}), 500
 
-# Define a rota para adicionar um novo produto
 @product_bp.route('/product', methods=['POST'])
 def add_product():
+    """Adiciona um novo produto."""
     try:
-        # Obtém os dados da pedido
         data = request.get_json()
         if not data:
-            return jsonify({"error": "Invalid input"}), 400  # Retorna um erro se os dados forem inválidos
+            return jsonify({"error": "Invalid input"}), 400
 
         name = data.get('name')
-        price = data.get('price')
-        size = data.get('size')
+        price_6_slices = data.get('price_6_slices')
+        price_8_slices = data.get('price_8_slices')
+        price_12_slices = data.get('price_12_slices')
 
-        if not name or not price or not size:
-            return jsonify({"error": "Missing required fields"}), 400  # Retorna um erro se algum campo obrigatório estiver faltando
+        if not name or not price_6_slices or not price_8_slices or not price_12_slices:
+            return jsonify({"error": "Missing required fields"}), 400
 
-        # Cria uma instância da classe Product e salva no Firestore
-        product = Product(name, price, size)
+        product = Product(name, price_6_slices, price_8_slices, price_12_slices)
         db.collection('Produtos').add(product.to_dict())
-        return jsonify({"success": True}), 201  # Retorna uma mensagem de sucesso
+        return jsonify({"success": True}), 201
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # Retorna um erro genérico em caso de exceção
+        return jsonify({"error": str(e)}), 500
 
-# Define a rota para atualizar um produto existente
 @product_bp.route('/product/<product_id>', methods=['PUT'])
 def update_product(product_id):
+    """Atualiza um produto existente."""
     try:
-        # Obtém os dados da requisição
         data = request.get_json()
         if not data:
-            return jsonify({"error": "Invalid input"}), 400  # Retorna um erro se os dados forem inválidos
+            return jsonify({"error": "Invalid input"}), 400
 
-        # Atualiza o documento do produto no Firestore com os novos dados
         product_ref = db.collection('Produtos').document(product_id)
         product_ref.update(data)
-        return jsonify({"success": True}), 200  # Retorna uma mensagem de sucesso (se actualizo)
+        return jsonify({"success": True}), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # Retorna um erro genérico em caso de exceção
+        return jsonify({"error": str(e)}), 500
 
-# Define a rota para deletar um produto existente
 @product_bp.route('/product/<product_id>', methods=['DELETE'])
 def delete_product(product_id):
+    """Exclui um produto existente."""
     try:
-        # Deleta o documento do produto no Firestore
         db.collection('Produtos').document(product_id).delete()
-        return jsonify({"success": True}), 200  # Retorna uma mensagem de sucesso
+        return jsonify({"success": True}), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # Retorna um erro genérico em caso de exceção
+        return jsonify({"error": str(e)}), 500

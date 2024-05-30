@@ -1,0 +1,137 @@
+/* Estilos generales */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #fff3e0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el menú de pizzas */
+.cardapio {
+    background-color: #ffe0b2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.cardapio h1 {
+    font-family: 'Merriweather', serif;
+    color: #b33e10;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.itens-cardapio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.pizza-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pizza-item .info {
+    width: 100%;
+}
+
+.pizza-item table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pizza-item table td {
+    padding: 5px;
+}
+
+.pizza-item button.pedir {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pizza-item button.pedir:hover {
+    background-color: #e64a19;
+}
+
+/* Estilos para el formulario de pago */
+#paymentForm {
+    background-color: #ffe0b2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Inicialmente oculto */
+}
+
+#paymentForm h2 {
+    font-family: 'Merriweather', serif;
+    color: #b33e10;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#paymentForm div {
+    margin-bottom: 15px;
+}
+
+#paymentForm label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#paymentForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#paymentForm button {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#paymentForm button:hover {
+    background-color: #e64a19;
+}
+
+/* Media Queries para mejorar la responsividad */
+@media (max-width: 768px) {
+    .pizza-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .pizza-item {
+        width: calc(100% - 20px);
+    }
+}

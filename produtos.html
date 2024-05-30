@@ -1,200 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Admin - Manage Products</title>
+    <link rel="stylesheet" href="produtos.css">
+    <title>Gerenciamento de produtos</title>
+
+
 </head>
 
 <body>
     <div class="container">
-        <h1>Gerenciar Produtos</h1>
-        <!-- Formulário para adicionar novos produtos -->
+        <h1>Produtos</h1>
         <form id="add-product-form">
-            <label for="name">Nome do Produto:</label>
+            <label for="name">Nome :</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="price">Preço:</label>
-            <input type="number" id="price" name="price" required>
+            <label for="price_6_slices">Preço 6 fatias:</label>
+            <input type="number" id="price_6_slices" name="price_6_slices" required>
 
-            <label for="size">Tamanho:</label>
-            <select id="size" name="size" required>
-                <option value="6 slices">6 fatias</option>
-                <option value="8 slices">8 fatias</option>
-                <option value="12 slices">12 fatias</option>
-            </select>
+            <label for="price_8_slices">Preço 8 fatias:</label>
+            <input type="number" id="price_8_slices" name="price_8_slices" required>
 
-            <button type="submit">Adicionar Produto</button>
+            <label for="price_12_slices">Preço 8 fatias:</label>
+            <input type="number" id="price_12_slices" name="price_12_slices" required>
+
+            <button type="submit">Adicionar Produtos</button>
         </form>
 
-        <h2>Lista de Produtos</h2>
+        <h2>Lista de produtos</h2>
         <table id="product-table">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th>Tamanho</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- As linhas dos produtos serão adicionadas aqui dinamicamente -->
+                <!-- Product rows will be added here dynamically -->
             </tbody>
         </table>
 
-        <!-- Modal para atualizar produtos -->
         <div class="modal" id="update-product-modal">
-            <h2>Atualizar Produto</h2>
+            <h2>Editar Produtos</h2>
             <form id="update-product-form">
                 <input type="hidden" id="update-product-id">
-                <label for="update-name">Nome do Produto:</label>
+                <label for="update-name">Nome:</label>
                 <input type="text" id="update-name" name="name" required>
 
-                <label for="update-price">Preço:</label>
-                <input type="number" id="update-price" name="price" required>
+               
+                <label for="update-price_6_slices">Preço 6 fatias:</label>
+                <input type="number" id="update-price_6_slices" name="price_6_slices" required>
 
-                <label for="update-size">Tamanho:</label>
-                <select id="update-size" name="size" required>
-                    <option value="6 slices">6 fatias</option>
-                    <option value="8 slices">8 fatias</option>
-                    <option value="12 slices">12 fatias</option>
-                </select>
+                <label for="update-price_8_slices">Preço 8 fatias:</label>
+                <input type="number" id="update-price_8_slices" name="price_8_slices" required>
 
-                <button type="submit">Atualizar Produto</button>
-                <button type="button" onclick="closeUpdateModal()">Cancelar</button>
+                <label for="update-price_12_slices">Preço 12 fatias:</label>
+                <input type="number" id="update-price_12_slices" name="price_12_slices" required>
+
+
+                <button type="submit">Confirmar</button>
+                <button type="button" onclick="closeUpdateModal()">Cancel</button>
             </form>
         </div>
     </div>
-
     <script>
-        // Evento para adicionar um produto
-        document.getElementById('add-product-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Previne o comportamento padrão do formulário
+       document.getElementById('add-product-form').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-            // Obtém os valores dos campos do formulário
             const name = document.getElementById('name').value;
-            const price = document.getElementById('price').value;
-            const size = document.getElementById('size').value;
+            const price_6_slices = document.getElementById('price_6_slices').value;
+            const price_8_slices = document.getElementById('price_8_slices').value;
+            const price_12_slices = document.getElementById('price_12_slices').value;
 
-            // Envia os dados do novo produto para o backend
-            fetch('http://127.0.0.1:5000/product/product', {
+            fetch('http://localhost:5000/product/product', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, price, size }), // Converte os dados em JSON
+                body: JSON.stringify({
+                    name: name,
+                    price_6_slices: price_6_slices,
+                    price_8_slices: price_8_slices,
+                    price_12_slices: price_12_slices
+                }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Produto adicionado com sucesso');
-                    loadProducts(); // Recarrega a lista de produtos após adicionar um novo
-                } else {
-                    alert('Erro ao adicionar produto');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Product added successfully');
+                        loadProducts(); // Reload products after adding a new one
+                    } else {
+                        alert('Error adding product');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
 
-        // Função para carregar a lista de produtos
         function loadProducts() {
             fetch('http://127.0.0.1:5000/product/products')
-            .then(response => response.json())
-            .then(data => {
-                const productTableBody = document.getElementById('product-table').getElementsByTagName('tbody')[0];
-                productTableBody.innerHTML = ''; // Limpa a tabela antes de adicionar novas linhas
+                .then(response => response.json())
+                .then(data => {
+                    const productTableBody = document.getElementById('product-table').getElementsByTagName('tbody')[0];
+                    productTableBody.innerHTML = ''; // Clear the table before adding new rows
 
-                // Adiciona cada produto na tabela
-                data.forEach(product => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                        <td>${product.size}</td>
-                        <td>
-                            <button onclick="deleteProduct('${product.id}')">Excluir</button>
-                            <button onclick="openUpdateModal('${product.id}', '${product.name}', ${product.price}, '${product.size}')">Atualizar</button>
-                        </td>
-                    `;
-                    productTableBody.appendChild(row);
+                    data.forEach(product => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${product.name}</td>
+                            <td>
+                                6 fatias: ${product.price_6_slices}<br>
+                                8 fatias: ${product.price_8_slices}<br>
+                                12 fatias: ${product.price_12_slices}
+                            </td>
+                            <td>
+                                <button onclick="deleteProduct('${product.id}')">Apagar</button>
+                                <button onclick="openUpdateModal('${product.id}', '${product.name}', ${product.price_6_slices}, ${product.price_8_slices}, ${product.price_12_slices})">Editar</button>
+                            </td>
+                        `;
+                        productTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 });
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
         }
 
-        // Função para excluir um produto
         function deleteProduct(productId) {
-            fetch(`http://127.0.0.1:5000/product/product/${productId}`, {
+            fetch(`http://localhost:5000/product/product/${productId}`, {
                 method: 'DELETE'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Produto excluído com sucesso');
-                    loadProducts(); // Recarrega a lista de produtos após exclusão
-                } else {
-                    alert('Erro ao excluir produto');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Product deleted successfully');
+                        loadProducts(); // Reload products after deletion
+                    } else {
+                        alert('Error deleting product');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
-        // Função para abrir o modal de atualização de produto
-        function openUpdateModal(productId, name, price, size) {
+        function openUpdateModal(productId, name, price_6_slices, price_8_slices, price_12_slices) {
+            console.log("Opening update modal...");
             document.getElementById('update-product-id').value = productId;
             document.getElementById('update-name').value = name;
-            document.getElementById('update-price').value = price;
-            document.getElementById('update-size').value = size;
+            document.getElementById('update-price_6_slices').value = price_6_slices;
+            document.getElementById('update-price_8_slices').value = price_8_slices;
+            document.getElementById('update-price_12_slices').value = price_12_slices;
 
             document.getElementById('update-product-modal').classList.add('active');
         }
 
-        // Função para fechar o modal de atualização de produto
         function closeUpdateModal() {
             document.getElementById('update-product-modal').classList.remove('active');
         }
 
-        // Evento para atualizar um produto
         document.getElementById('update-product-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Previne o comportamento padrão do formulário
+            event.preventDefault();
 
-            // Obtém os valores dos campos do formulário
             const productId = document.getElementById('update-product-id').value;
             const name = document.getElementById('update-name').value;
-            const price = document.getElementById('update-price').value;
-            const size = document.getElementById('update-size').value;
+            const price_6_slices = document.getElementById('update-price_6_slices').value;
+            const price_8_slices = document.getElementById('update-price_8_slices').value;
+            const price_12_slices = document.getElementById('update-price_12_slices').value;
 
-            // Envia os dados do produto atualizado para o backend
             fetch(`http://127.0.0.1:5000/product/product/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, price, size }), // Converte os dados em JSON
+                body: JSON.stringify({ name, price_6_slices, price_8_slices, price_12_slices, size }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Produto atualizado com sucesso');
-                    closeUpdateModal(); // Fecha o modal de atualização
-                    loadProducts(); // Recarrega a lista de produtos após atualização
-                } else {
-                    alert('Erro ao atualizar produto');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
-        });
-
-        // Carrega os produtos quando a página é carregada
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Product updated successfully');
+                        closeUpdateModal();
+                        loadProducts(); // Reload products after updating
+                    } else {
+                        alert('Error updating product');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        })
+        // Load products when the page loads
         window.onload = loadProducts;
     </script>
 </body>

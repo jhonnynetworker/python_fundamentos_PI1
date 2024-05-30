@@ -10,3 +10,8 @@ menuToggle.addEventListener('click', () => {
     menuContent.classList.toggle('on', show);
     show = !show;
 })
+
+
+      function pedirmenu() {
+        window.location.href = 'pedirmenu.html';
+    }
