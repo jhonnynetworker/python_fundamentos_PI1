@@ -114,3 +114,15 @@ table th {
     margin-bottom: 10px;
     color: #333;
 }
+
+/* Para navegadores baseados no WebKit (Chrome, Safari) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para navegadores baseados no Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

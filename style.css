@@ -170,10 +170,10 @@ html {
     margin-top: 2rem;
     margin-bottom: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 550px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px)); /* Ajustado para diminuir o tamanho máximo dos cards */
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px; /* Ajuste do espaçamento entre os cards */
 }
 
 .itens-cardapio .info {
@@ -183,47 +183,49 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
+    padding: 1rem; /* Ajustado para diminuir o padding */
 }
 
 .itens-cardapio .info h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Ajustado para diminuir o tamanho da fonte */
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem; /* Ajustado para diminuir a margem */
     text-decoration: underline;
 }
 
 .itens-cardapio .info h4 {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Ajustado para diminuir o tamanho da fonte */
     text-transform: uppercase;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem; /* Ajustado para diminuir a margem */
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 150px 150px;
-    margin-left: 6rem;
+    grid-template-columns: 120px 120px; /* Ajustado para diminuir o tamanho das colunas */
+    margin-left: 5rem; /* Ajustado para diminuir a margem */
 }
 
-.itens-cardapio .info h4 span{
-    font-size: 1.6rem;
-    color:#585858;
-    margin-left: 1.5rem;
+.itens-cardapio .info h4 span {
+    font-size: 1.4rem; /* Ajustado para diminuir o tamanho da fonte */
+    color: #585858;
+    margin-left: 1rem; /* Ajustado para diminuir a margem */
     text-decoration: underline;
 }
 
 .itens-cardapio div {
     background-color: #b8a4a4;
-    box-shadow: 0px 0px 4px 1px ;
+    box-shadow: 0px 0px 4px 1px;
 }
 
 .itens-cardapio img {
     width: 100%;
-    height: 200px;
+    height: 150px; /* Ajustado para diminuir a altura das imagens */
+    object-fit: contain; /* Redimensiona a imagem para caber no contêiner sem cortar */
+    object-position: center; /* Centraliza a imagem no contêiner */
 }
 
 .itens-cardapio .info .pedir {
-    width: 200px;
-    height: 35px;
+    width: 180px; /* Ajustado para diminuir a largura do botão */
+    height: 30px; /* Ajustado para diminuir a altura do botão */
     margin-top: 0.5rem;
     background-color: #d1d1d1;
     border-radius: 5px;
@@ -276,7 +278,7 @@ html {
    font-size: 6rem;
    margin-bottom: 1rem;
    font-family: 'Indie Flower', cursive;
-   color: #00FFFF;
+   color: #fffb00;
 }
 
 .contentsobre p {
@@ -515,5 +517,7 @@ footer {
     
 }
 
-
+.menu{
+    padding-top: 15px;
+}
 
