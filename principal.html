@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3df637a2f2.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-auth-compat.js"></script>
+    <title>Crosta Crocante</title>
+</head>
+
+<body>
+    <header>
+
+        <div class="content">
+            <div class="logo">
+                <h3>Crosta Crocante</h3>
+            </div>
+
+            <ul class="list-menu">
+                <li><a href="#Menu">Menu</a></li>
+                <li><a href="/UML.html">UML</a></li>
+                <li><a href="/produtos.html">Gerenciamento</a></li>
+                <li><a href="#contatos">Contactos</a></li>
+
+            </ul>
+
+            <div class="menu-toggle">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="sobre-nos" id="sobrenos">
+        <div class="main">
+            <div class="contentsobre">
+                <h2>Sobre nós</h2>
+                <p>Na Crosta Crocante cada pizza é uma experiência inesquecível. A nossa massa, é preparada diariamente
+                    e
+                    fermentada
+                    lentamente, garante uma textura perfeita: crocante por fora e macia por dentro. Usamos apenas os
+                    os melhores ingredientes, selecionados com cuidado para oferecer qualidade e sabor em cada mordida.
+                    A nossa ementa clássica como Margherita e Pepperoni, além de criações exclusivas como a
+                    "Abacate com especiarias" e a "Doces variados".
+                    Pode vir descobrir por que somos referência em pizzas artesanais. Na Crosta Crocante, cada pizza é
+                    feita com amor e dedicação.</p>
+            </div>
+            <div class="img-cozinha">
+                <img src="./img/cozinha da pizzaria.webp" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="cardapio" id="Menu">
+        <h2 class="menu" >Menu</h2>
+
+        <div class="itens-cardapio">
+            <div class="Cagamelos">
+                <img src="./img/bacon e cogumelos.png" alt="frango">
+                <div class="info">
+                    <h3>Bacon com cogumelos</h3>
+                    <h4>Pequena<span>10,00€</span></h4>
+                    <h4>Média<span>15,00€</span></h4>
+                    <h4>Grande<span>25,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+            </div>
+            <div class="barbacu">
+                <img src="./img/frango com barbecue-removebg.png" alt="Margarita">
+                <div class="info">
+                    <h3>Frango com Barbecue</h3>
+                    <h4>Pequena<span>10,00€</span></h4>
+                    <h4>Média<span>15,00€</span></h4>
+                    <h4>Grande<span>25,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="4 queijos">
+                <img src="./img/queijo.png" alt="portuguesa">
+                <div class="info">
+                    <h3>4 Queijos</h3>
+                    <h4>Pequena<span>10,00€</span></h4>
+                    <h4>Média<span>15,00€</span></h4>
+                    <h4>Grande<span>25,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="vegan">
+                <img src="./img/pizza vegan.png" alt="strogonoff">
+                <div class="info">
+                    <h3>Vegetariana</h3>
+                    <h4>Pequena<span>15,00€</span></h4>
+                    <h4>Média<span>25,00€</span></h4>
+                    <h4>Grande<span>30,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="Peperoni">
+                <img src="./img/azeitonas e cebola.png" alt="strogonoff">
+                <div class="info">
+                    <h3>Peperoni, azeitonas e cebola</h3>
+                    <h4>Pequena<span>10,00€</span></h4>
+                    <h4>Média<span>15,00€</span></h4>
+                    <h4>Grande<span>25,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="manjericão">
+                <img src="./img/pizza primavera.png" alt="strogonoff">
+                <div class="info">
+                    <h3>Tomate chérry, manjericão e azeitonas</h3>
+                    <h4>Pequena<span>15,00€</span></h4>
+                    <h4>Média<span>25,00€</span></h4>
+                    <h4>Grande<span>30,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="Chocolate">
+                <img src="./img/pizza de chocolate.png" alt="strogonoff">
+                <div class="info">
+                    <h3>Chocolate</h3>
+                    <h4>Pequena<span>15,00€</span></h4>
+                    <h4>Média<span>25,00€</span></h4>
+                    <h4>Grande<span>30,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="doces variados">
+                <img src="./img/pizza de doces variados.png" alt="strogonoff">
+                <div class="info">
+                    <h3>Doces variados</h3>
+                    <h4>Pequena<span>15,00€</span></h4>
+                    <h4>Média<span>25,00€</span></h4>
+                    <h4>Grande<span>30,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+
+            </div>
+            <div class="novidade">
+                <img src="./img/calzone.png" alt="Margarita">
+                <div class="info">
+                    <h3>Calzone de frango com queijo</h3>
+                    <h4>Pequena<span>8,00€</span></h4>
+                    <h4>Média<span>11,00€</span></h4>
+                    <h4>Grande<span>16,00€</span></h4>
+                    <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                </div>
+            </div>
+
+                <div class="calzone vegan">
+                    <img src="./img/calzone vegan.png" alt="frango">
+                    <div class="info">
+                        <h3>Calzone de milho, brocolos e ricota</h3>
+                        <h4>Pequena<span>8,00€</span></h4>
+                        <h4>Média<span>11,00€</span></h4>
+                        <h4>Grande<span>16,00€</span></h4>
+                        <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                    </div>
+                </div>
+                    <div class="espetos">
+                    <img src="./img/espetos de queijo.png" alt="frango">
+                    <div class="info">
+                        <h3>Espetos de muzarella</h3>
+                        <h4>6 fatias<span>6,00€</span></h4>
+                        <h4>8 fatias<span>8,00€</span></h4>
+                        <h4>12 fatias<span>12,00€</span></h4>
+                        <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                    </div>
+                </div>
+                <div class="pão de alho">
+                    <img src="./img/pão de alho.png" alt="frango">
+                    <div class="info">
+                        <h3>Pão de Alho</h3>
+                        <h4>6 fatias<span>3,00€</span></h4>
+                        <h4>8 fatias<span>4,00€</span></h4>
+                        <h4>12 fatias<span>6,00€</span></h4>
+                        <button class="pedir" onclick="pedirmenu()">pedir agora</button>
+                    </div>
+                </div>
+        </div>
+
+    </section>
+
+    <section class="contatos" id="contatos">
+        <h3>Contacto</h3>
+        <div class="contatos-secao">
+            <div>
+                <i class="fas fa-phone"></i>
+                <span>(+351)
+                    987654321</span>
+            </div>
+            <div>
+                <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/iguess.caroll">@iguess.caroll</a>
+                <a href="https://www.instagram.com/sgsofia9_">@sgsofia9_</a>
+            </div>
+            <div>
+                <i class="fab fa-facebook-f"></i>
+                <span>Carolina Cardoso &
+                    Sofia Mosquera
+                </span>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h4>Desenvolvido por -> Carolina Cardoso & Laura Gomez.</h4>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
