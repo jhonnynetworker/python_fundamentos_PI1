@@ -1,3 +1,4 @@
+
 # Importa as bibliotecas necessárias do Firebase Admin SDK
 import firebase_admin
 from firebase_admin import credentials, firestore, auth
@@ -13,5 +14,6 @@ def init_firebase():
 
 # Inicializa o Firebase e obtém o cliente Firestore
 db = init_firebase()
+
 
 
