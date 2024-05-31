@@ -141,7 +141,7 @@ html {
 .btn {
     width: 480px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
    
 }
 
