@@ -15,19 +15,20 @@
         <h1>Produtos</h1>
         <form id="add-product-form">
             <label for="name">Nome :</label>
-            <input type="text" id="name" name="name" required>
-
+            <input type="text" id="name" name="name" placeholder="Selecionar" required>
+        
             <label for="price_6_slices">Preço 6 fatias:</label>
-            <input type="number" id="price_6_slices" name="price_6_slices" required>
-
+            <input type="number" id="price_6_slices" name="price_6_slices" placeholder="Selecionar" required>
+        
             <label for="price_8_slices">Preço 8 fatias:</label>
-            <input type="number" id="price_8_slices" name="price_8_slices" required>
-
+            <input type="number" id="price_8_slices" name="price_8_slices" placeholder="Selecionar" required>
+        
             <label for="price_12_slices">Preço 12 fatias:</label>
-            <input type="number" id="price_12_slices" name="price_12_slices" required>
-
+            <input type="number" id="price_12_slices" name="price_12_slices" placeholder="Selecionar" required>
+        
             <button type="submit">Adicionar Produtos</button>
         </form>
+        
 
         <h2>Lista de produtos</h2>
         <table id="product-table">
@@ -43,29 +44,29 @@
             </tbody>
         </table>
 
+
         <div class="modal" id="update-product-modal">
             <h2>Editar Produtos</h2>
             <form id="update-product-form">
                 <input type="hidden" id="update-product-id">
                 <label for="update-name">Nome:</label>
                 <input type="text" id="update-name" name="name" required>
-
-               
+                
                 <label for="update-price_6_slices">Preço 6 fatias:</label>
                 <input type="number" id="update-price_6_slices" name="price_6_slices" required>
-
+    
                 <label for="update-price_8_slices">Preço 8 fatias:</label>
                 <input type="number" id="update-price_8_slices" name="price_8_slices" required>
-
+    
                 <label for="update-price_12_slices">Preço 12 fatias:</label>
                 <input type="number" id="update-price_12_slices" name="price_12_slices" required>
-
-
+    
                 <button type="submit">Confirmar</button>
                 <button type="button" onclick="closeUpdateModal()">Cancel</button>
             </form>
         </div>
     </div>
+
     <script>
        document.getElementById('add-product-form').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -177,7 +178,7 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, price_6_slices, price_8_slices, price_12_slices, size }),
+                body: JSON.stringify({ name, price_6_slices, price_8_slices, price_12_slices,  }),
             })
                 .then(response => response.json())
                 .then(data => {
