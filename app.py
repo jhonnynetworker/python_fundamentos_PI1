@@ -1,3 +1,4 @@
+
 # Importa as bibliotecas necessárias
 from flask import Flask
 import firebase_admin  # Importa o firebase_admin
@@ -25,3 +26,4 @@ def create_app():
 if __name__ == '__main__':
     app = create_app()  # Cria a aplicação chamando a função create_app
     app.run(debug=True)  # Executa a aplicação em modo debug
+
