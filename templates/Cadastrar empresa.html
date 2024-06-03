@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro de Empresa</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .cadastro-box {
+        width: 400px;
+        margin: 100px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .cadastro-box h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .cadastro-box input[type="text"],
+    .cadastro-box input[type="email"],
+    .cadastro-box input[type="tel"],
+    .cadastro-box input[type="date"],
+    .cadastro-box input[type="url"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .cadastro-box input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .cadastro-box input[type="submit"]:hover {
+        background: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="cadastro-box">
+    <h2>Cadastro de Empresa</h2>
+    <form action="seu_script_backend.py" method="post">
+        <input type="text" name="nome_empresa" placeholder="Nome da Empresa" required>
+        <input type="text" name="nome_responsavel" placeholder="Nome do Responsável" required>
+        <input type="text" name="endereco" placeholder="Endereço" required>
+        <input type="tel" name="telefone" placeholder="Telefone" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="date" name="data_fundacao" placeholder="Data de Fundação" required>
+        <input type="text" name="setor" placeholder="Setor" required>
+        <input type="submit" value="Cadastrar">
+    </form>
+</div>
+
+</body>
+</html>
