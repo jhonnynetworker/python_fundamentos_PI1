@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template_string, request, jsonify
 import sqlite3
+import requests
 
 app = Flask(__name__)
 
@@ -25,48 +26,48 @@ def create_or_update_login_table():
 create_or_update_table()
 create_or_update_login_table()
 
+# Substitua pelo endereço IP do computador do seu colaborador
+REMOTE_HTML_SERVER = 'http://192.168.30.82:8000'
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    response = requests.get(f'{REMOTE_HTML_SERVER}/index.html')
+    return render_template_string(response.text)
 
-@app.route('/add', methods=['POST'])
+@app.route('/add_desempregado', methods=['POST'])
 def add_desempregado():
-    data = request.get_json()
-    nome = data.get('nome')
-    idade = data.get('idade')
-    telefone = data.get('telefone')
-    formacao = data.get('formacao')
-    email = data.get('email')
-    
-    if not (nome and idade and telefone and formacao and email):
-        return jsonify({"error": "Todos os campos devem ser preenchidos!"})
-    
+    nome = request.form['nome']
+    idade = request.form['idade']
+    telefone = request.form['telefone']
+    formacao = request.form['formacao']
+    email = request.form['email']
+
     conn = sqlite3.connect('desempregados.db')
     c = conn.cursor()
     c.execute("INSERT INTO desempregados (nome, idade, telefone, formacao, email) VALUES (?, ?, ?, ?, ?)",
               (nome, idade, telefone, formacao, email))
     conn.commit()
     conn.close()
-    
+
     return jsonify({"success": "Desempregado adicionado com sucesso!"})
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
 
-    conn = sqlite3.connect('login.db')
-    c = conn.cursor()
-    c.execute("SELECT * FROM login WHERE username = ? AND password = ?", (username, password))
-    user = c.fetchone()
-    conn.close()
+        conn = sqlite3.connect('login.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM login WHERE username = ? AND password = ?", (username, password))
+        user = c.fetchone()
+        conn.close()
 
-    if user:
-        return jsonify({"success": "Login bem-sucedido!"})
-    else:
-        return jsonify({"error": "Credenciais inválidas!"})
+        if user:
+            return jsonify({"success": "Login bem-sucedido!"})
+        else:
+            return jsonify({"error": "Credenciais inválidas!"})
+    return render_template_string(requests.get(f'{REMOTE_HTML_SERVER}/login.html').text)
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=5000, debug=True)
-
+    app.run(host='0.0.0.0', port=5000, debug=True)
