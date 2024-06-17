@@ -135,12 +135,7 @@ header nav ul li {
     margin-left: 100px; /* Espaçamento entre os links */
 }
 
-/* body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    font-size: 18px; /* Aumenta a fonte */
+
 */
 .header {
     background: #333;
@@ -198,4 +193,46 @@ header nav ul li {
 }
 .content:hover .hidden-content {
     display: block;
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1, h2, h3 {
+    color: #01070ee1;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    padding: 5px 0;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #02070c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 20px;
 }
