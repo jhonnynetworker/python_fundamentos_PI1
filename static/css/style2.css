@@ -14,17 +14,22 @@ body {
 .logo-container {
     width: 100px; /* Largura da bola */
     height: 100px; /* Altura da bola */
-    background-color: rgb(174, 228, 50); /* Cor da bola */
     border-radius: 50%; /* Borda arredondada para criar a forma de bola */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 200px; /* Espaçamento entre a bola e os links */
+    margin-right: 300px; /* Espaçamento entre a bola e os links */
 }
 
 .logo {
     font-size: 30px; /* Tamanho do texto "A-G-D" */
     color: rgb(17, 11, 11); /* Cor do texto dentro da bola */
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%; /* Garantir que a imagem também seja redonda */
 }
 
 .header a {
@@ -35,204 +40,19 @@ body {
     margin-left: 100px; /* Espaçamento entre os links */
 }
 
-/* body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    font-size: 18px; /* Aumenta a fonte */
-*/
-.header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-.header a {
-    color: #fff;
-    padding: 0 15px;
-    text-decoration: none;
-}
-.logo-container {
-    float: left;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-header {
-    background: #f4f4f4;
-    padding: 10px 0;
-    border-bottom: #0779e4 3px solid;
-}
-header #branding h1 {
-    margin: 0;
-    font-size: 24px; /* Aumenta a fonte */
-}
-header nav ul {
-    padding: 0;
-    list-style: none;
-    text-align: center;
-}
-header nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
-.content {
+/* Estilos adicionais para o vídeo */
+.video-container {
     padding: 20px;
     background: #e2e2e2;
     margin-top: 20px;
-    transition: background 0.3s, color 0.3s;
-    cursor: pointer;
-}
-.content:hover {
-    background: #d1d1d1;
-}
-.hidden-content {
-    display: none;
-}
-.content:hover .hidden-content {
-    display: block;
-}body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.header {
-    background-color: rgb(10, 10, 119);
-    color: white;
-    padding: 10px 36px;
-    display: flex;
-    align-items: center;
-}
-
-.logo-container {
-    width: 100px; /* Largura da bola */
-    height: 100px; /* Altura da bola */
-    background-color: rgb(174, 228, 50); /* Cor da bola */
-    border-radius: 50%; /* Borda arredondada para criar a forma de bola */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 200px; /* Espaçamento entre a bola e os links */
-}
-
-.logo {
-    font-size: 30px; /* Tamanho do texto "A-G-D" */
-    color: rgb(17, 11, 11); /* Cor do texto dentro da bola */
-}
-
-.header a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 100px; /* Espaçamento entre os links */
-}
-
-
-*/
-.header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
     text-align: center;
 }
-.header a {
-    color: #fff;
-    padding: 0 15px;
-    text-decoration: none;
-}
-.logo-container {
-    float: left;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-header {
-    background: #f4f4f4;
-    padding: 10px 0;
-    border-bottom: #0779e4 3px solid;
-}
-header #branding h1 {
-    margin: 0;
-    font-size: 24px; /* Aumenta a fonte */
-}
-header nav ul {
-    padding: 0;
-    list-style: none;
-    text-align: center;
-}
-header nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
-.content {
-    padding: 20px;
-    background: #e2e2e2;
-    margin-top: 20px;
-    transition: background 0.3s, color 0.3s;
-    cursor: pointer;
-}
-.content:hover {
-    background: #d1d1d1;
-}
-.hidden-content {
-    display: none;
-}
-.content:hover .hidden-content {
+
+video {
     display: block;
-}
-
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h1, h2, h3 {
-    color: #01070ee1;
-}
-ul {
-    list-style: none;
-    padding: 0;
-}
-ul li {
-    padding: 5px 0;
-}
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #02070c;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    margin-top: 20px;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333; /* Borda ao redor do vídeo */
+    border-radius: 10px; /* Cantos arredondados do vídeo */
 }
