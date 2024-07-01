@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+
 import firebase_admin
 from routes.auth_routes import auth_bp
 from routes.product_routes import product_bp
@@ -15,23 +16,29 @@ def create_app():
     app.register_blueprint(product_bp, url_prefix='/product')
     app.register_blueprint(purchase_bp, url_prefix='/purchase')
 
+    # Configuración de la política de seguridad de contenido (CSP)
+    @app.after_request
+    def add_security_headers(response):
+        response.headers['Content-Security-Policy'] = "default-src 'self'; style-src 'self' 'unsafe-inline' *.googleapis.com heapanalytics.com vercel.com *.vercel.com *.vercel.sh vercel.live *.stripe.com twitter.com *.twitter.com *.github.com *.codesandbox.io wss://*.vercel.com localhost:* chrome-extension://* https://www.gstatic.com;"
+        return response
+
     @app.route('/')
     def index():
         return render_template('index.html')
 
-    @app.route('/produtos')  # Aquí estaba el error de indentación
+    @app.route('/produtos')
     def produtos():
         return render_template('produtos.html')
 
-    @app.route('/pedirmenu')  # Aquí también
+    @app.route('/pedirmenu')
     def pedirmenu():
         return render_template('pedirmenu.html')
 
-    @app.route('/UML')  # Y aquí
+    @app.route('/UML')
     def UML():
         return render_template('UML.html')
 
-    @app.route('/form')  # Y finalmente aquí
+    @app.route('/form')
     def form():
         return render_template('form.html')
 
