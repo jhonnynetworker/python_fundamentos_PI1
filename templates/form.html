@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/form.css">
+    <title>Registro do usuário</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Preencha Suas Informações</h1>
+        <!-- Formulário para coletar informações adicionais do usuário -->
+        <form id="additional-info-form">
+            <div class="form-group">
+                <label for="name"></label>
+                <input type="text" id="name" name="name" placeholder="Nome" required>
+            </div>
+            <div class="form-group">
+                <label for="age"></label>
+                <input type="number" id="age" name="age" placeholder="Idade" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        // Adiciona um ouvinte de evento ao formulário para o evento de envio (submit)
+        document.getElementById('additional-info-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+
+            // Obtém os dados do formulário
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const email = sessionStorage.getItem('userEmail'); // Recupera o email do usuário do sessionStorage
+
+            // Envia os dados para o backend
+            fetch('http://127.0.0.1:5000/auth/fill-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    age,
+                    email
+                }), // Converte os dados do formulário em uma string JSON
+            })
+            .then(response => {
+                // Verifica se a resposta da rede não está ok (status de erro)
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Converte a resposta em JSON
+            })
+            .then(data => {
+                // Loga uma mensagem de sucesso no console
+                console.log('Informações adicionais enviadas com sucesso:', data);
+                // Redireciona o usuário para outra página
+                window.location.href = 'principal.html'; // Muda para a página desejada
+            })
+            .catch(error => {
+                // Loga um erro no console em caso de falha
+                console.error('Erro:', error);
+                // Lida com o erro (pode adicionar alguma lógica de tratamento aqui)
+            });
+        });
+    </script>
+</body>
+
+</html>
