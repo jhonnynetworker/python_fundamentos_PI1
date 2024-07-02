@@ -39,7 +39,7 @@
 
     <script>
         function loadProducts() {
-            fetch('http://127.0.0.1:5000/product/products')
+            fetch('https://pizza-python.vercel.app/api/products')
                 .then(response => response.json())
                 .then(data => {
                     const menuSection = document.querySelector('.menu .menu-items');

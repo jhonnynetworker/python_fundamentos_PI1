@@ -36,7 +36,7 @@
             const email = sessionStorage.getItem('userEmail'); // Recupera o email do usuário do sessionStorage
 
             // Envia os dados para o backend
-            fetch('http://127.0.0.1:5000/auth/fill-data', {
+            fetch('https://pizza-python.vercel.app/api/data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
