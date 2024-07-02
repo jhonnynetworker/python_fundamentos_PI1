@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "functions": {
+    "api/*.py": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
+  ],
+  "env": {
+    "FLASK_ENV": "production"
+  },
+  "ignore": [
+    ".git/**",
+    "node_modules/**",
+    "__pycache__/**",
+    "*.log",
+    "*.md",
+    "tests/**",
+    "docs/**",
+    "scripts/**",
+    "*.test.js",
+    "*.test.ts"
+  ]
+}
+
+  

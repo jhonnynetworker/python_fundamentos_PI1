@@ -1,0 +1,196 @@
+/* Estilos generales */
+body {
+    font-family: 'Lato', sans-serif;
+    background: url('https://t4.ftcdn.net/jpg/05/99/00/79/360_F_599007953_u3IyNRlZXsZd8pMu2qSdByjDf8PcKWt7.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el menú de pizzas */
+.menu {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.menu h1 {
+    font-family: 'Merriweather', serif;
+    color: #ff4500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.pizza-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px; /* Espacio entre elementos */
+}
+
+.pizza-item .info {
+    width: 100%;
+}
+
+.pizza-item table {
+    width: 100%;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+}
+
+.pizza-item table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.pizza-item button.order-now {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pizza-item button.order-now:hover {
+    background-color: #e63900;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Margen ajustado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+#paymentForm h2 {
+    font-family: 'Merriweather', serif;
+    color: #ff4500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#paymentForm button {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#paymentForm button:hover {
+    background-color: #e63900;
+}
+
+/* Media Queries para mejorar la responsividad */
+@media (max-width: 1200px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .pizza-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .pizza-item {
+        width: calc(50% - 20px);
+    }
+
+    .menu-items {
+        justify-content: center; /* Alinear elementos al centro */
+    }
+
+    .modal-content {
+        margin: 15% auto; /* Ajustar margen del modal */
+        width: 90%; /* Ancho reducido del modal */
+    }
+}
+
+@media (max-width: 480px) {
+    .pizza-item {
+        width: calc(100% - 20px);
+    }
+
+    .menu h1 {
+        font-size: 24px;
+    }
+}

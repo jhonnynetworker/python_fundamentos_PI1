@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "crosta-crocante",
+  "private_key_id": "acd4d52ec917e11a429091ca70e64f23a5985fa4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCvqll06w+AYjEp\n5A5fVJEZMCHf2lYCLZyv72h2OxkksQef9u/ienT1wl3OZIjtSXvfVTQXRZC+DkYX\nxd7wsnSitUpigGrEKyiKrUmHIVs7Qg5L/H+DQAcEfeXRbdz/BbZKnJ2OCLcR81Xw\nzyH+ZKO3r1UdPQ4Ap3Sg6wC8NoAaJTZWVx/akqjTlHf9tlZ0NgXhdup0vjqEZ8wc\nNT6d3gevAwUUQi4ymZwR9pYP5lsb5HlNRv1+UgASa7AYrJYJCDbBw3m36+XAfxaN\nOGNGqXt0pG3qWKmON+BV7Aeu9ZCVhzH6IhgRzGLPX0yZOdm7VAbROoNqh/fLsR9x\nmPgxuXfVAgMBAAECggEASP0Yb1aN2dOyxsud1yldoqAXqxnem8gU7xskBeAXWeH+\nn44sbSdheo24iV3HcQST5h9SZgr/EaD/qbgLImqbwNFf516hPgIKtdg7kVygOhZ/\ntz3iQ4gygkDHYUXrScE3VXgOlOn1Gw3G2yhNYRSy28sLq/rm2wm5EXWjmBBzGKlG\nWSlYIeXvgm0kbAvm8p3ORHc2KMLWP89KZiuF9+sE+re9x8afMyUB+vgJN9qdvHRY\nA51PrP5oQdsPwHlA7QqJyVWyFNjR3UzYicDNynfxX2yYLDiX29Cp2aHXFloMDp0M\nW6tKkXrsFztA0AcS/9EzcGxiDAdbW1s7pLz54zRJzwKBgQDUlkB76H8vYc0V/l83\niLGRxT0IpvWyn4LW8p3Uij+QMqseDDFS5mzMWyINQAOivJXOY4xLXKamnxi+i7he\nsmhG6LyVnbsnTbEZJhKDyyeyVzf9DsQWmOcixycW+lXXnjAq/OdYAx6dsCjfXXMx\nn07qEfzf++nS7TZ/gp9LwhKvswKBgQDTieSt9wx2QjxFBpmGwGpEfZI+MwZu3xMb\nNtt5JISQCOdXdefshwnyHkC+1R+oeC6jUTSafA1J+6XsJQJhSxNgStL+C2mg9dxE\nYsvx9nMDWOybV/XzgBKRkQwcMtHpbFshloA8tKJLjtbo7DlSuU9YvWGJiYn/juzN\ndsGK2nA2VwKBgFtKFnDfO1auifJK5LqlUZOGfporkFDfXMFPOGWf5IHYsFDb7YZq\n+weajvnfpnAIyc/yQbnPFKVypp6Uw1yvAkaJBQq+zDKpk0Z4afT8lZRpDdr2r1AA\n4yi1Gt0sLRbFkGu1ZOcPl+MhVbvtll0Vyz6K8OuCczunsAJ7pkpTEdEvAoGBAKmN\nP/bUKm/rPQWSeaHRPhvxjjM+kKxzLoxElvttcrdD+7FVdvRVdHpVF04d4wcUdUVA\nBGrCfaBMDLzPGS5Ej55BuwYWva5fAhLqIU+qWptXPiZxBVkL0VZNrSg475kp2Y19\nZQHDQsZPEiCVnoiYsWmOOcyUqkBlHZa91flmhkR3AoGAU9/jTkbue2XREBmPf3DW\n4MLBvL5NIwKJf0KDwoWnm7+Q4dONk3ySDVimuLa/ptQmxgFkMLng3Iq2lqtOB8zJ\nmb3zPjD9tSZIhu0zyYc6Zlxc7/dW5vRk1Te3AXtVRALWYg6BpY3gtBKqa9trKOKR\nc/d3n3OKk8oV1//jbExFQ/I=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-o9fhf@crosta-crocante.iam.gserviceaccount.com",
+  "client_id": "113631905540436636512",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-o9fhf%40crosta-crocante.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
