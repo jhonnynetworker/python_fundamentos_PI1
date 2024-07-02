@@ -127,7 +127,7 @@
             const price_8_slices = document.getElementById('price_8_slices').value;
             const price_12_slices = document.getElementById('price_12_slices').value;
 
-            fetch('http://localhost:5000/product/product', {
+            fetch('https://pizza-python.vercel.app/api/products', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, price_6_slices, price_8_slices, price_12_slices }),
@@ -145,7 +145,7 @@
         });
 
         function loadProducts() {
-            fetch('http://127.0.0.1:5000/product/products')
+            fetch('https://pizza-python.vercel.app/api/products') 
                 .then(response => response.json())
                 .then(data => {
                     const productTableBody = document.getElementById('product-table').getElementsByTagName('tbody')[0];
@@ -171,7 +171,7 @@
         }
 
         function deleteProduct(productId) {
-            fetch(`http://localhost:5000/product/product/${productId}`, { method: 'DELETE' })
+            fetch(`https://pizza-python.vercel.app/api/products/${productId}`, { method: 'DELETE' })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -205,7 +205,7 @@
             const price_8_slices = document.getElementById('update-price_8_slices').value;
             const price_12_slices = document.getElementById('update-price_12_slices').value;
 
-            fetch(`http://127.0.0.1:5000/product/product/${productId}`, {
+            fetch(`https://pizza-python.vercel.app/api/products/${productId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, price_6_slices, price_8_slices, price_12_slices }),
