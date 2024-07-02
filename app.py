@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-
 import firebase_admin
 from routes.auth_routes import auth_bp
 from routes.product_routes import product_bp
@@ -19,7 +18,11 @@ def create_app():
     # Configuración de la política de seguridad de contenido (CSP)
     @app.after_request
     def add_security_headers(response):
-        response.headers['Content-Security-Policy'] = "default-src 'self'; img-src *; style-src 'self' 'unsafe-inline' *.googleapis.com heapanalytics.com vercel.com *.vercel.com *.vercel.sh vercel.live *.stripe.com twitter.com *.twitter.com *.github.com *.codesandbox.io wss://*.vercel.com localhost:* chrome-extension://* https://www.gstatic.com;"
+        response.headers['Content-Security-Policy'] = (
+            "default-src 'self'; "
+            "img-src *; "
+            "style-src 'self' 'unsafe-inline' *.googleapis.com heapanalytics.com vercel.com *.vercel.com *.vercel.sh vercel.live *.stripe.com twitter.com *.twitter.com *.github.com *.codesandbox.io wss://*.vercel.com localhost:* chrome-extension://* https://www.gstatic.com;"
+        )
         return response
 
     @app.route('/')
