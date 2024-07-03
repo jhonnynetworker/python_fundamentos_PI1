@@ -9,11 +9,13 @@ body {
   padding: 10px 36px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .logo-container {
-  width: 100px; /* Largura da bola */
-  height: 100px; /* Altura da bola */
+  width: 80px; /* Largura da bola */
+  height: 80px; /* Altura da bola */
   border-radius: 50%; /* Borda arredondada para criar a forma de bola */
   display: flex;
   align-items: center;
@@ -22,7 +24,7 @@ body {
 }
 
 .logo {
-  font-size: 30px; /* Tamanho do texto "A-G-D" */
+  font-size: 24px; /* Tamanho do texto "A-G-D" */
   color: rgb(17, 11, 11); /* Cor do texto dentro da bola */
 }
 
@@ -32,15 +34,20 @@ body {
   border-radius: 50%; /* Garantir que a imagem também seja redonda */
 }
 
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .header a {
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
-  margin-left: 90px; /* Espaçamento entre os links */
+  margin: 10px; /* Espaçamento entre os links */
 }
 
-/* Estilos adicionais para o vídeo */
 .video-container {
   padding: 20px;
   background: #e2e2e2;
@@ -55,4 +62,59 @@ video {
   height: auto;
   border: 2px solid #333; /* Borda ao redor do vídeo */
   border-radius: 10px; /* Cantos arredondados do vídeo */
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .header a {
+    font-size: 12px;
+    margin-left: 0;
+  }
+
+  .video-container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 10px;
+  }
+
+  .logo-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .header a {
+    font-size: 10px;
+  }
+
+  .video-container {
+    padding: 5px;
+  }
+}
+.container-nav {
+  height: 1em;
+  padding: 2%;
 }
