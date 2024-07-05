@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/pedirmenu.css">
+    <title>Menú de Pizzas</title>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h1>Menú de Pizzas</h1>
+            <div class="menu-items">
+                <!-- Aquí se añadirán dinámicamente los elementos del menú -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para el formulario de pago -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pago</h2>
+            <div class="form-group">
+                <label for="cardName">Nombre en la Tarjeta:</label>
+                <input type="text" id="cardName" placeholder="Nombre en la tarjeta">
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Número de Tarjeta:</label>
+                <input type="text" id="cardNumber" placeholder="Número de tarjeta">
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" placeholder="CVV">
+            </div>
+            <button onclick="processPayment()">Pagar</button>
+        </div>
+    </div>
+
+    <script>
+        function loadProducts() {
+            fetch('https://pizza-python.vercel.app/api/products')
+                .then(response => response.json())
+                .then(data => {
+                    const menuSection = document.querySelector('.menu .menu-items');
+                    menuSection.innerHTML = ''; // Limpiar el menú antes de añadir nuevos elementos
+
+                    data.forEach(product => {
+                        const pizzaDiv = document.createElement('div');
+                        pizzaDiv.classList.add('pizza-item');
+                        pizzaDiv.innerHTML = `
+                            <div class="info">
+                                <h3>${product.name}</h3>
+                                <table>
+                                    <tr>
+                                        <td>Pequeña</td>
+                                        <td>${product.price_6_slices}€</td>
+                                        <td><input type="number" min="0" value="0" class="quantity" data-price="${product.price_6_slices}" onchange="updateTotalPrice(this)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mediana</td>
+                                        <td>${product.price_8_slices}€</td>
+                                        <td><input type="number" min="0" value="0" class="quantity" data-price="${product.price_8_slices}" onchange="updateTotalPrice(this)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grande</td>
+                                        <td>${product.price_12_slices}€</td>
+                                        <td><input type="number" min="0" value="0" class="quantity" data-price="${product.price_12_slices}" onchange="updateTotalPrice(this)"></td>
+                                    </tr>
+                                </table>
+                                <button class="order-now" onclick="showPaymentModal()">Pedir ahora</button>
+                                <p class="total-price">Precio total: 0€</p>
+                            </div>
+                        `;
+                        menuSection.appendChild(pizzaDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function updateTotalPrice(element) {
+            const quantities = document.querySelectorAll('.quantity');
+            let total = 0;
+            quantities.forEach(quantity => {
+                const price = parseFloat(quantity.getAttribute('data-price'));
+                const qty = parseInt(quantity.value);
+                total += price * qty;
+            });
+
+            const totalPriceElements = document.querySelectorAll('.total-price');
+            totalPriceElements.forEach(elem => {
+                elem.textContent = `Precio total: ${total.toFixed(2)}€`;
+            });
+        }
+
+        function showPaymentModal() {
+            const modal = document.getElementById("paymentModal");
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("paymentModal");
+            modal.style.display = "none";
+        }
+
+        function processPayment() {
+            const cardName = document.getElementById("cardName").value;
+            const cardNumber = document.getElementById("cardNumber").value;
+            const cvv = document.getElementById("cvv").value;
+
+            if (cardName && cardNumber && cvv) {
+                alert("¡Pago realizado con éxito!");
+                closeModal();
+            } else {
+                alert("Por favor, complete todos los campos de la tarjeta.");
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            loadProducts();
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("paymentModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.querySelector('.close').onclick = function() {
+            closeModal();
+        }
+    </script>
+</body>
+</html>
