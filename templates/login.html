@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../static/css/styles3.css" />
   </head>
   <body>
-    <form class="form card">
+    <form class="form card" action="/login" method="POST">
       <div class="card_header">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,11 +18,14 @@
           <path fill="none" d="M0 0h24v24H0z"></path>
           <path
             fill="currentColor"
-            d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"
+            d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"
           ></path>
         </svg>
         <h1 class="form_heading">Sign in</h1>
       </div>
+      {% if message %}
+      <p>{{ message }}</p>
+      {% endif %}
       <div class="field">
         <label for="username">Username</label>
         <input
@@ -37,14 +40,14 @@
         <label for="password">Password</label>
         <input
           class="input"
-          name="user_password"
+          name="password"
           type="password"
           placeholder="Password"
           id="password"
         />
       </div>
       <div class="field">
-        <button class="button">Login</button>
+        <button class="button" type="submit">Login</button>
       </div>
     </form>
   </body>
