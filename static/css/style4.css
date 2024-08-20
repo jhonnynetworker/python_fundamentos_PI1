@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  .cadastro-box {
+    width: 400px;
+    margin: 100px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .cadastro-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .cadastro-box input[type="text"],
+  .cadastro-box input[type="email"],
+  .cadastro-box input[type="tel"],
+  .cadastro-box input[type="date"],
+  .cadastro-box input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .cadastro-box input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  a .cadastro-box input[type="submit"]:hover {
+    background: #0056b3;
+  }

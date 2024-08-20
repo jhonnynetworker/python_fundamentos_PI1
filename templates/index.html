@@ -4,29 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página Inicial</title>
-    <link rel="stylesheet" href="../static/css/style2.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style2.css') }}"
+    />
   </head>
   <body>
     <div class="header">
       <div class="logo-container">
         <div class="logo">
-          <img src="imagem4.png" alt="logo" class="logo-img" />
+          <img
+            src="{{ url_for('static', filename='imagem4.png') }}"
+            alt="logo"
+            class="logo-img"
+          />
         </div>
       </div>
 
+      <!-- Barra de navegação -->
       <nav class="container-nav">
-        <a href="adiciona desempregado.html">Adiciona Desempregado</a>
-        <a href="cadastra empresas.html">Cadastrar Empresas</a>
-        <a href="login.html">Login</a>
+        <a href="{{ url_for('adiciona_desempregado') }}"
+          >Adiciona Desempregado</a
+        >
+        <a href="{{ url_for('cadastra_empresas') }}">Cadastrar Empresas</a>
+        <a href="{{ url_for('login') }}">Login</a>
       </nav>
     </div>
 
     <div class="video-container">
-      <h1>A.G.D seu futro proficional começa aque</h1>
+      <h1>A.G.D seu futuro profissional começa aqui</h1>
       <p>Breve apresentação</p>
 
       <video width="640" height="360" controls>
-        <source src="/templates/vidio.mp4" type="video/mp4" />
+        <source
+          src="{{ url_for('static', filename='vidio.mp4') }}"
+          type="video/mp4"
+        />
         Seu navegador não suporta a tag de vídeo.
       </video>
     </div>
