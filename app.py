@@ -3,6 +3,7 @@ import pyrebase
 
 app = Flask(__name__)
 
+# Configuração do Firebase
 firebaseConfig = {
     "apiKey": "AIzaSyDCFW1yyGD1R0Jj2-m-J6jlrDxd94XE",
     "authDomain": "a-g-d-3a987.firebaseapp.com",
@@ -17,20 +18,27 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
 
+# Rota principal - Página Inicial
 @app.route('/')
 def index():
-    return render_template('login.html')
+    return render_template('index.html')  # Carrega a página principal que você forneceu
 
-@app.route('/login', methods=['POST'])
+# Rota para login
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    email = request.form['username']
-    password = request.form['password']
-    try:
-        user = auth.sign_in_with_email_and_password(email, password)
-        message = 'Login efetuado com sucesso.'
-    except:
-        message = 'Login falhou. Verifique suas credenciais e tente novamente.'
-    return render_template('login.html', message=message)
+    if request.method == 'POST':
+        email = request.form['username']
+        password = request.form['password']
+        try:
+            # Tentativa de login no Firebase Auth
+            user = auth.sign_in_with_email_and_password(email, password)
+            message = 'Login efetuado com sucesso.'
+        except:
+            message = 'Login falhou. Verifique suas credenciais e tente novamente.'
+        return render_template('login.html', message=message)
+    
+    # Se for uma requisição GET, renderize a página de login sem mensagem
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
